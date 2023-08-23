@@ -31,7 +31,7 @@ public class View_Logic extends JFrame {
     private double floorWeight=500;
     //總樓層
     private int storey=10;
-    //存放即將停靠的樓層的集合
+    //存放乘客選擇停靠樓層的集合
     public List<Integer> list=new ArrayList<Integer>();
     Set<Integer> intSet = new HashSet<Integer>();
     //計算程式執行秒數開頭
@@ -57,6 +57,7 @@ public class View_Logic extends JFrame {
         show02.setBounds(20,110,300,80);
 
         
+        //建立電梯按鈕區塊
         this.setLayout(null);
         jPanel=new JPanel();
         jPanel.setBounds(20,200,300,500);
@@ -97,6 +98,7 @@ public class View_Logic extends JFrame {
                         }
                     }
                 });
+            //電梯開門按鈕控制
             }else if (i==10){
                 jButton[i] =new JButton("<>");
                 jPanel.add(jButton[i]);
@@ -112,13 +114,14 @@ public class View_Logic extends JFrame {
                             show01.setText("電梯門要關了");
                     }
                 });
+            //電梯關門按鈕控制
             }else if(i==11) {
                 jButton[i] =new JButton("><");
                 jPanel.add(jButton[i]);
                 jButton[i].addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //排序
+                        //將乘客所選的樓層進行排序
                         service.listSort(list);
                         show02.setText(String.valueOf(list));
                         show01.setText("電梯關門");
