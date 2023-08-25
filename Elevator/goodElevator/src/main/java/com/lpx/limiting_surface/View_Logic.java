@@ -13,12 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import java.text.ParseException;
-import java.util.HashSet;
-import java.util.Set;
-
-import java.util.concurrent.TimeUnit;
-
 import static java.lang.Thread.sleep;
 
 public class View_Logic extends JFrame {
@@ -33,7 +27,6 @@ public class View_Logic extends JFrame {
     private int storey=10;
     //存放乘客選擇停靠樓層的集合
     public List<Integer> list=new ArrayList<Integer>();
-    Set<Integer> intSet = new HashSet<Integer>();
     //計算程式執行秒數開頭
     long startTime = System.nanoTime();
     String stringToSearch;
@@ -87,7 +80,7 @@ public class View_Logic extends JFrame {
                         }
                         
                         //boolean if_in=false;
-                        //for(i=0;i<list.length;i++){
+                        //for(i=0;i<list.size();i++){
                         //    if( list[i]==q ){
                         //      if_in=true;
                         //    }
