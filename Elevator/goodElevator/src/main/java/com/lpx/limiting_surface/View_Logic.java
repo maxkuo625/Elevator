@@ -85,7 +85,13 @@ public class View_Logic extends JFrame {
                         }else{
                             show02.setText("樓層重複選取");
                         }
-                        //
+                        
+                        //boolean if_in=false;
+                        //for(i=0;i<list.length;i++){
+                        //    if( list[i]==q ){
+                        //      if_in=true;
+                        //    }
+                        //  }
                         weight=weight+service.weightadd();
                         System.out.println(String.format("當前重量"+"%.2f", weight)+"KG");
                         show02.setText("電梯即將停靠" + String.valueOf(list) + "樓");
