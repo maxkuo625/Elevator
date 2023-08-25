@@ -70,15 +70,8 @@ public class View_Logic extends JFrame {
                 jButton[i].addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        jButton[finalI].setBackground(Color.white);
-                       //忽略重複的輸入(沒成功)
-                        //boolean k = Arrays.asList(list).contains(q);
-                        //if(k == false){
-                        //    list.add(q);
-                        //}else{
-                        //    show02.setText("樓層重複選取");
-                        //}
-                        
+                        jButton[finalI].setBackground(Color.white);   
+                        //忽略重複的輸入
                         boolean if_in=false;
                         for(int i=0;i<list.size();i++){
                             if( list.get(i)==q ){
