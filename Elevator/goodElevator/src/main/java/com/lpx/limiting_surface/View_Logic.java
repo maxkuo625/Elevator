@@ -72,19 +72,24 @@ public class View_Logic extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         jButton[finalI].setBackground(Color.white);
                        //忽略重複的輸入(沒成功)
-                        boolean k = Arrays.asList(list).contains(q);
-                        if(k == false){
-                            list.add(q);
-                        }else{
-                            show02.setText("樓層重複選取");
-                        }
+                        //boolean k = Arrays.asList(list).contains(q);
+                        //if(k == false){
+                        //    list.add(q);
+                        //}else{
+                        //    show02.setText("樓層重複選取");
+                        //}
                         
-                        //boolean if_in=false;
-                        //for(i=0;i<list.size();i++){
-                        //    if( list[i]==q ){
-                        //      if_in=true;
-                        //    }
-                        //  }
+                        boolean if_in=false;
+                        for(int i=0;i<list.size();i++){
+                            if( list.get(i)==q ){
+                              if_in=true;
+                            }
+                          }
+                          if(if_in == true){
+                           show01.setText("樓層重複選取");
+                        }else{
+                             list.add(q);
+                        }
                         weight=weight+service.weightadd();
                         System.out.println(String.format("當前重量"+"%.2f", weight)+"KG");
                         show02.setText("電梯即將停靠" + String.valueOf(list) + "樓");
