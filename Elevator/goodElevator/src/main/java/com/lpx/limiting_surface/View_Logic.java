@@ -125,6 +125,7 @@ public class View_Logic extends JFrame {
                         if (weight <= floorWeight){
                             if (list.size() > 0) {
                                 if (flag == true) {
+                                    //電梯上樓,若樓層重複選取則會略過
                                     for (int m = floor; m <= storey; m++) {
 
                                         // show01.setText("當前到達樓層"+m);
@@ -137,7 +138,7 @@ public class View_Logic extends JFrame {
                                         }
 
                                         System.out.println("*****************");
-                                        //電梯上樓,若樓層重複選取則會略過
+                                        //電梯到達乘客選擇的樓層時印出到達訊息,同時減去隨機重量
                                         for (int n = 0; n < list.size(); n++) {
                                             if (m == list.get(n)) {
                                                 weight = service.weightcut(weight);
@@ -150,13 +151,19 @@ public class View_Logic extends JFrame {
                                                 jButton[m - 1].setBackground(null);
                                                 show01.setText("電梯開門-當前樓層為" + list.get(n) + "樓");
                                                 JOptionPane.showMessageDialog(null, "到達樓層：" + m + "樓,電梯開門", "樓層到達訊息", JOptionPane.PLAIN_MESSAGE);
+                                                list.remove(n);
+                                                System.out.println(list);
+                                                boolean empty = list.isEmpty();
+                                                System.out.println(empty);
                                                 //當電梯抵達頂樓之後將會清空陣列
-                                                if (m == list.get(list.size() - 1)) {
+                                                //if (m == list.get(list.size() - 1)) {
+                                                if (empty == true) {
                                                     jButton[m - 1].setBackground(null);
                                                     show01.setText("電梯開門-當前樓層為" + list.get(n) + "樓");
                                                     weight = 0;
                                                     System.out.println("當前重量" + 0.00 + "KG");
-                                                    list.clear();
+                                                    //list.clear();
+                                                    //System.out.println(list);
                                                     //將最終停靠樓層指派給所在樓層的變數
                                                     floor = m;
                                                     flag = true;
@@ -168,6 +175,8 @@ public class View_Logic extends JFrame {
                                                     show01.setText("當前電梯在第：" + floor + " 樓");
                                                     show02.setText("當前電梯已經沒人了");
                                                     return;
+                                                }else{
+                                                   show01.setText("尚有樓層還沒跑完");
                                                 }
                                                 break;
                                             }
@@ -175,6 +184,7 @@ public class View_Logic extends JFrame {
                                         }
                                     }
                                 } else {
+                                    //電梯下樓,若樓層重複選取則會略過
                                     for (int m = floor; m >= 1; m--) {
 
                                         // show01.setText("當前到達樓層"+m);
@@ -186,7 +196,7 @@ public class View_Logic extends JFrame {
                                         }
                                         System.out.println(". . . . . .");
                                         System.out.println("當前樓層" + m + "樓");
-                                        //電梯下樓,若樓層重複選取則會略過
+                                        //電梯到達乘客選擇的樓層時印出到達訊息,同時減去隨機重量
                                         for (int n = list.size() - 1; n >= 0; n--) {
                                             if (m == list.get(n)) {
                                                 weight = service.weightcut(weight);
@@ -198,14 +208,18 @@ public class View_Logic extends JFrame {
                                                 jButton[m - 1].setBackground(null);
                                                 show01.setText("電梯開門-當前樓層為" + list.get(n) + "樓");
                                                 JOptionPane.showMessageDialog(null, "到達樓層：" + m + "樓,電梯開門", "樓層到達訊息", JOptionPane.PLAIN_MESSAGE);
-
+                                                list.remove(n);
+                                                System.out.println(list);
+                                                boolean empty = list.isEmpty();
+                                                System.out.println(empty);
                                                 //當電梯抵達一樓之後將會清空陣列
-                                                if (m == list.get(0)) {
+                                                //if (m == list.get(0)) {
+                                                if (empty == true) {
                                                     jButton[m - 1].setBackground(null);
                                                     show01.setText("電梯開門-當前樓層為" + list.get(n) + "樓");
                                                     weight = 0;
                                                     System.out.println("當前重量" + 0.00 + "KG");
-                                                    list.clear();
+                                                    //list.clear();
                                                     //將最終停靠樓層指派給所在樓層的變數
                                                     floor = m;
                                                     flag = true;
